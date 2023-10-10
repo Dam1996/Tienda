@@ -31,7 +31,7 @@ public class CarritoController {
     private final CompraService compraService;
 
     @PostMapping
-    //@PreAuthorize("hasAuthority('CLIENTE')")
+    @PreAuthorize("hasAuthority('CLIENTE')")
     @SecurityRequirement(name = "Bearer Authentication")
     public Compra createCompra(@RequestBody CarritoDTO carritoDTO){
         Carrito carrito;
@@ -48,7 +48,7 @@ public class CarritoController {
     }
 
     @PutMapping("/{nroCarrito}")
-    //@PreAuthorize("hasAuthority('CLIENTE')")
+    @PreAuthorize("hasAuthority('CLIENTE')")
     @SecurityRequirement(name = "Bearer Authentication")
     public Carrito efectuarCompra(@PathVariable("nroCarrito") Long id){
         Carrito carrito = carritoService.getById(id);
@@ -65,7 +65,7 @@ public class CarritoController {
     }
 
     @GetMapping
-    //@PreAuthorize("hasAuthority('ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @SecurityRequirement(name = "Bearer Authentication")
     public List<Compra> findAllByNroCarrito(){
         List<Long> idCompras =  compraService.findByAllCarritoCompra();
