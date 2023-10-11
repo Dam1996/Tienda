@@ -47,7 +47,7 @@ public class CarritoController {
         return this.compraService.createCompra(carrito,product,carritoDTO);
     }
 
-    @PutMapping("/{nroCarrito}")
+    @PutMapping("/confirmarCompra/{nroCarrito}")
     @PreAuthorize("hasAuthority('CLIENTE')")
     @SecurityRequirement(name = "Bearer Authentication")
     public Carrito efectuarCompra(@PathVariable("nroCarrito") Long id){
@@ -64,7 +64,7 @@ public class CarritoController {
         return this.carritoService.update(carrito);
     }
 
-    @GetMapping
+    @GetMapping("/comprasRealizadas")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @SecurityRequirement(name = "Bearer Authentication")
     public List<Compra> findAllByNroCarrito(){
